@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"
+          xmlns:th="http://www.thymeleaf.org"
+          xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <title>Aulas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="container-cabecalho">
+    <h3>Minhas Aulas</h3>
+</header>
+<nav class="container-nav">
+    <div class="btn-nav" onclick="novaAula()">NOVA</div>
+    <div class="btn-nav" onclick="reset()">RESET</div>
+</nav>
+
+<div class="container-geral">
+    <div th:each="aula: ${aulas}">
+        <div class="container-aula">
+            <div class="container-linha1">
+                <div class="info">Data: <span th:text="${aula.data}" class="texto"></span></div>
+                <div class="info">Hora: <span th:text="${aula.horario}" class="texto"></span></div>
+                <div class="info">Duração(h): <span th:text="${aula.duracao}" class="texto"></span></div>
+            </div>
+            <div class="container-linha2">
+                <div class="info">Disciplina: <span th:text="${aula.disciplina}" class="texto"></span></div>
+                <div class="info">Assunto: <span th:text="${aula.assunto}" class="texto"></span></div>
+            </div>
+            <div class="container-btns">
+                <div></div>
+                <div class="btn" th:attr="id=${aula.id}" th:onclick="editarAula(this.getAttribute('id'))">EDITAR</div>
+                <div class="btn" th:attr="id=${aula.id}" th:onclick="deleta(this.getAttribute('id'))">REMOVER</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
